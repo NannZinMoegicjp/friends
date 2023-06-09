@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <h1>Friends List</h1>
 <table class="table table-bordered table-hover">
     <thead class="table-dark">
@@ -8,8 +9,6 @@
         <th>Twitter</th>
         <th>User id</th>
         <th> </th>
-        <th> </th>
-        <th> </th>
       </tr>
     </thead>
     <tbody>
@@ -17,19 +16,13 @@
       <% if friend.user_id == current_user.id %>
         <tr class="align-middle">
           <td>
-            <%= friend.first_name + ' ' + friend.last_name %>
+          <%= link_to friend.first_name + ' ' + friend.last_name , friend%>
           </td>
           <td><%= friend.email %></td>
           <td><%= friend.phone %></td>
           <td><%= friend.twitter %></td> 
-          <td><%= friend.user_id %></td> 
-          <td>
-            <%= link_to "Show", friend%>
-          </td> 
-          <td>
-            <%= link_to "Edit", edit_friend_path(friend) %>
-          </td>  
-           <td><%= button_to 'Destroy', friend, method: :delete, onclick:"return confirmDelete();", class:"link-button" %></td>       
+          <td><%= friend.user_id %></td>  
+          <td><%= button_to 'Delete', friend, method: :delete, onclick:"return confirmDelete();", class:"btn btn-outline-danger btn-sm" %></td>       
         </tr>
       <% end %>
       <% end %>
@@ -45,3 +38,7 @@
     return false;
   }
 </script>
+<% else %>
+<h1>Hello word</h1>
+<p>This is my very first ruby page</p>
+<% end %>
