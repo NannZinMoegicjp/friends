@@ -1,7 +1,4 @@
-
-
 <h1>Friends List</h1>
-
 <table class="table table-bordered table-hover">
     <thead class="table-dark">
       <tr>
@@ -14,23 +11,33 @@
         <th> </th>
       </tr>
     </thead>
-
     <tbody>
       <% @friends.each do |friend| %>
-        <tr>
+        <tr class="align-middle">
           <td>
-            <%= link_to friend.first_name + ' ' + friend.last_name, friend %>
+            <%= friend.first_name + ' ' + friend.last_name %>
           </td>
           <td><%= friend.email %></td>
           <td><%= friend.phone %></td>
-          <td><%= friend.twitter %></td>
-          <td>            
-            <%= link_to "Show", friend  %>                       
-          </td>   
-          <td><%= link_to "Edit", edit_friend_path(friend) %></td>
-          <td><%= button_to 'Delete', friend, method: :delete, data: { confirm: 'Are you sure?' } %></td>       
+          <td><%= friend.twitter %></td>         
+          <td>
+            <%= link_to "Show", friend%>
+          </td> 
+          <td>
+            <%= link_to "Edit", edit_friend_path(friend) %>
+          </td>  
+           <td><%= button_to 'Delete', friend, method: :delete, onclick:"return confirmDelete();" %></td>       
         </tr>
       <% end %>
     </tbody>
   </table>
   <%= link_to "New friend", new_friend_path, class:"btn btn-secondary" %>
+<script>
+  let confirmDelete=()=>{
+    const confirmMessage = "Are you sure?"
+    if(confirm(confirmMessage)){
+      return true;
+    }
+    return false;
+  }
+</script>
