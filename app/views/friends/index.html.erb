@@ -6,6 +6,7 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Twitter</th>
+        <th>User id</th>
         <th> </th>
         <th> </th>
         <th> </th>
@@ -13,21 +14,24 @@
     </thead>
     <tbody>
       <% @friends.each do |friend| %>
+      <% if friend.user_id == current_user.id %>
         <tr class="align-middle">
           <td>
             <%= friend.first_name + ' ' + friend.last_name %>
           </td>
           <td><%= friend.email %></td>
           <td><%= friend.phone %></td>
-          <td><%= friend.twitter %></td>         
+          <td><%= friend.twitter %></td> 
+          <td><%= friend.user_id %></td> 
           <td>
             <%= link_to "Show", friend%>
           </td> 
           <td>
             <%= link_to "Edit", edit_friend_path(friend) %>
           </td>  
-           <td><%= button_to 'Delete', friend, method: :delete, onclick:"return confirmDelete();" %></td>       
+           <td><%= button_to 'Destroy', friend, method: :delete, onclick:"return confirmDelete();", class:"link-button" %></td>       
         </tr>
+      <% end %>
       <% end %>
     </tbody>
   </table>
