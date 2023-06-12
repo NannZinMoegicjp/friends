@@ -7,7 +7,6 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Twitter</th>
-        <th>User id</th>
         <th> </th>
       </tr>
     </thead>
@@ -21,8 +20,8 @@
           <td><%= friend.email %></td>
           <td><%= friend.phone %></td>
           <td><%= friend.twitter %></td> 
-          <td><%= friend.user_id %></td>  
-          <td><%= button_to 'Delete', friend, method: :delete, onclick:"return confirmDelete();", class:"btn btn-outline-danger btn-sm" %></td>       
+          <td><%= button_to 'Delete', friend, method: :delete, onclick:"return confirmDelete();",
+          class:"btn btn-outline-danger btn-sm" %></td>       
         </tr>
       <% end %>
       <% end %>
